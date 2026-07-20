@@ -173,7 +173,7 @@ Browser-side examples for generating and inspecting CII invoices client-side, us
 
 Many downstream systems (ERPs, accounting software, expense management tools) work natively with JSON rather than XML, and the CII tree is unpleasant to walk by hand: business terms live several namespaces deep under names like `ram:SpecifiedLineTradeAgreement`. The `ExtractJson` examples in every language upload a CII XML file and receive the EN 16931 model back as clean JSON: seller, buyer, line items, tax breakdown, totals, and payment details.
 
-The invoice fields sit at the **root** of the response, so you read `seller.name` or `totals.grandTotalAmount` (BT-112) directly, with no wrapper object to unpack.
+The invoice document sits under the **`invoice`** key of the response, so you read `invoice.seller.name` or `invoice.totals.grandTotalAmount` (BT-112). A complete sample response with every field of the invoice model populated is in [json/extract-json-response.json](./json/extract-json-response.json); optional fields that are absent from the source document come back as `null` (empty arrays for lists).
 
 This is the fastest way to get invoice data out of a CII file and into a modern data pipeline.
 
