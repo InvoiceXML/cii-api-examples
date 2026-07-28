@@ -2,7 +2,7 @@
 
 Open-source code examples for working with the **UN/CEFACT Cross Industry Invoice (CII)**, the XML syntax behind **ZUGFeRD**, **Factur-X**, and **XRechnung**. CII is one of the two syntaxes permitted by the European norm **EN 16931** (the other is UBL 2.1), and this repository covers it as a **standalone XML document**, with no PDF wrapper.
 
-Examples in **C#, Java, PHP, JavaScript, Node.js, and Python** covering every common CII operation: invoice creation, validation against the EN 16931 rules, parsing invoice data into JSON, and (experimental) AI-powered conversion of plain PDF invoices into compliant CII documents.
+Examples in **C#, Java, PHP, JavaScript, Node.js, Python, and Ruby** covering every common CII operation: invoice creation, validation against the EN 16931 rules, parsing invoice data into JSON, and (experimental) AI-powered conversion of plain PDF invoices into compliant CII documents.
 
 Provided and maintained by [InvoiceXML](https://www.invoicexml.com), a complete e-invoice compliance toolkit for electronic invoicing standards, including CII, ZUGFeRD, Factur-X, XRechnung, UBL, and Peppol BIS Billing, available via REST-API, no-code platforms, and MCP server.
 
@@ -25,6 +25,7 @@ The EN 16931 specification alone runs over 400 pages, the CII D16B schema is a d
   - [Create and validate CII with JavaScript in the browser](#create-and-validate-cii-with-javascript-in-the-browser)
   - [Create and validate CII with Node.js](#create-and-validate-cii-with-nodejs)
   - [Create and validate CII with Python](#create-and-validate-cii-with-python)
+  - [Create and validate CII with Ruby](#create-and-validate-cii-with-ruby)
 - [Parse CII data as JSON](#parse-cii-data-as-json)
 - [Render CII as a readable PDF](#render-cii-as-a-readable-pdf)
 - [AI-powered PDF to CII conversion (Experimental)](#ai-powered-pdf-to-cii-conversion-experimental)
@@ -167,6 +168,22 @@ Browser-side examples for generating and inspecting CII invoices client-side, us
 
 [Open the Python examples →](./python)
 
+### Create and validate CII with Ruby
+
+Standard library only (`Net::HTTP`), no gems. The Ruby folder additionally covers AI parsing of old-school PDFs with confidence scores and embedded attachment extraction.
+
+```
+/ruby
+  create.rb
+  validate.rb
+  extract_json.rb
+  render.rb
+  parse_json.rb
+  extract_attachments.rb
+```
+
+[Open the Ruby examples →](./ruby)
+
 ---
 
 ## Parse CII data as JSON
@@ -276,7 +293,7 @@ Yes. Every generated CII document is validated against the D16B XSD and the EN 1
 
 Pull requests are welcome. Useful contributions include:
 
-- Additional languages (Go, Rust, Ruby, Kotlin, Swift)
+- Additional languages (Go, Rust, Kotlin, Swift)
 - Alternative library implementations in existing languages
 - Sample invoice fixtures covering edge cases (multi-currency, intra-EU reverse charge, zero-rated supplies, credit notes)
 - Translations of the README and inline comments
