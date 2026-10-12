@@ -253,7 +253,7 @@ CII is one syntax among several in the European e-invoicing landscape:
 - **Peppol BIS Billing 3.0**: UBL-based subset exchanged over the Peppol network.
 - **EN 16931**: the European norm that underlies all of the above.
 
-For a side-by-side comparison of when to use which format, see the [e-invoicing standards comparison on invoicexml.com](https://invoicexml.com/standards).
+For a side-by-side comparison of when to use which format, see the [e-invoicing standards comparison on invoicexml.com](https://www.invoicexml.com/standards).
 
 ---
 
@@ -285,7 +285,7 @@ Yes. Every generated CII document is validated against the D16B XSD and the EN 1
 - [EN 16931 (European Committee for Standardization)](https://www.cencenelec.eu/)
 - [Factur-X specification (FNFE-MPE)](https://fnfe-mpe.org/factur-x/), which profiles CII
 - [ZUGFeRD specification (FeRD)](https://www.ferd-net.de/standards/zugferd), which profiles CII
-- [invoicexml.com](https://invoicexml.com): guides, tutorials, validators, and standard comparisons for CII, ZUGFeRD, Factur-X, XRechnung, UBL, and Peppol
+- [invoicexml.com](https://www.invoicexml.com): guides, tutorials, validators, and standard comparisons for CII, ZUGFeRD, Factur-X, XRechnung, UBL, and Peppol
 
 ---
 
