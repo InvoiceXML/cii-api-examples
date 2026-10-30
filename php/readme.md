@@ -31,6 +31,7 @@ These examples use the built-in `curl_*` functions and `CURLFile` (available sin
 | File | Operation | API endpoint |
 |---|---|---|
 | [`create.php`](./create.php) | Build a CII D16B XML invoice | [`POST /v1/create/cii`](https://www.invoicexml.com/docs/api/create/cii) |
+| [`send-email.php`](./send-email.php) | Create a CII invoice and email it from your own domain | [`POST /v1/create/cii/email`](https://www.invoicexml.com/docs/api/create/cii/email) |
 | [`validate.php`](./validate.php) | Validate a CII file against the D16B XSD and EN 16931 rules | [`POST /v1/validate/cii`](https://www.invoicexml.com/docs/api/validate/cii) |
 | [`extract-json.php`](./extract-json.php) | Parse a CII XML into JSON | [`POST /v1/extract/json`](https://www.invoicexml.com/docs/api/extract/json) |
 | [`ai-convert.php`](./ai-convert.php) | (Experimental) Convert a plain PDF to CII with AI | [`POST /v1/transform/to/cii`](https://www.invoicexml.com/docs/api/transform/to/cii) |

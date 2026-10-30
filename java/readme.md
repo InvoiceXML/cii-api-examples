@@ -1,6 +1,6 @@
 # CII for Java: InvoiceXML API Examples
 
-Java code samples for creating, validating, and parsing **CII** electronic invoices using the **[InvoiceXML API](https://www.invoicexml.com)**. Requires **Java 15 or later** (Java 17 or 21 LTS recommended): `Create.java` uses text blocks, which were introduced in Java 15. The other examples also compile on Java 8. Runs in Spring Boot, Quarkus, Micronaut, Jakarta EE, Android, AWS Lambda, or plain `public static void main` console apps.
+Java code samples for creating, validating, and parsing **CII** electronic invoices using the **[InvoiceXML API](https://www.invoicexml.com)**. Requires **Java 15 or later** (Java 17 or 21 LTS recommended): `Create.java` and `SendEmail.java` use text blocks, which were introduced in Java 15. The other examples also compile on Java 8. Runs in Spring Boot, Quarkus, Micronaut, Jakarta EE, Android, AWS Lambda, or plain `public static void main` console apps.
 
 For background on the CII syntax itself (what it is, when to use it standalone), see the [main repository README](../README.md).
 
@@ -20,7 +20,7 @@ Authorization: Bearer YOUR_API_KEY
 
 ## Requirements
 
-- **Java 15 or later** (Java 17 or 21 LTS recommended). `Create.java` uses text blocks, a Java 15+ feature; the other four examples also compile on Java 8.
+- **Java 15 or later** (Java 17 or 21 LTS recommended). `Create.java` and `SendEmail.java` use text blocks, a Java 15+ feature; the other examples also compile on Java 8.
 - **OkHttp 4.x** for clean multipart handling and bearer auth
 
 ### Maven
@@ -46,6 +46,7 @@ OkHttp is the de facto standard HTTP client for modern Java. Java's built-in `ja
 | File | Operation | API endpoint |
 |---|---|---|
 | [`Create.java`](./Create.java) | Build a CII D16B XML invoice | [`POST /v1/create/cii`](https://www.invoicexml.com/docs/api/create/cii) |
+| [`SendEmail.java`](./SendEmail.java) | Create a CII invoice and email it from your own domain | [`POST /v1/create/cii/email`](https://www.invoicexml.com/docs/api/create/cii/email) |
 | [`Validate.java`](./Validate.java) | Validate a CII file against the D16B XSD and EN 16931 rules | [`POST /v1/validate/cii`](https://www.invoicexml.com/docs/api/validate/cii) |
 | [`ExtractJson.java`](./ExtractJson.java) | Parse a CII XML into JSON | [`POST /v1/extract/json`](https://www.invoicexml.com/docs/api/extract/json) |
 | [`AiConvert.java`](./AiConvert.java) | (Experimental) Convert a plain PDF to CII with AI | [`POST /v1/transform/to/cii`](https://www.invoicexml.com/docs/api/transform/to/cii) |

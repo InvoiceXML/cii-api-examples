@@ -44,6 +44,7 @@ Nokogiri is deliberately absent. Ruby can build CII XML by hand, but the EN 1693
 | File | Operation | API endpoint |
 |---|---|---|
 | [`create.rb`](./create.rb) | Build a CII D16B XML invoice | [`POST /v1/create/cii`](https://www.invoicexml.com/docs/api/create/cii) |
+| [`send_email.rb`](./send_email.rb) | Create a CII invoice and email it from your own domain | [`POST /v1/create/cii/email`](https://www.invoicexml.com/docs/api/create/cii/email) |
 | [`validate.rb`](./validate.rb) | Validate a CII file against the D16B XSD and EN 16931 rules | [`POST /v1/validate/cii`](https://www.invoicexml.com/docs/api/validate/cii) |
 | [`extract_json.rb`](./extract_json.rb) | Parse a CII XML into JSON (deterministic, no AI) | [`POST /v1/extract/json`](https://www.invoicexml.com/docs/api/extract/json) |
 | [`render.rb`](./render.rb) | Render CII XML into a human-readable PDF | [`POST /v1/render/cii/to/pdf`](https://www.invoicexml.com/docs/api/render/cii/to/pdf) |

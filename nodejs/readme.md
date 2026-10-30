@@ -30,6 +30,7 @@ The examples use Node's built-in global `fetch`, `FormData`, `Blob`, and `Buffer
 | File | Operation | API endpoint |
 |---|---|---|
 | [`create.js`](./create.js) | Build a CII D16B XML invoice | [`POST /v1/create/cii`](https://www.invoicexml.com/docs/api/create/cii) |
+| [`send-email.js`](./send-email.js) | Create a CII invoice and email it from your own domain | [`POST /v1/create/cii/email`](https://www.invoicexml.com/docs/api/create/cii/email) |
 | [`validate.js`](./validate.js) | Validate a CII file against the D16B XSD and EN 16931 rules | [`POST /v1/validate/cii`](https://www.invoicexml.com/docs/api/validate/cii) |
 | [`extract-json.js`](./extract-json.js) | Parse a CII XML into JSON | [`POST /v1/extract/json`](https://www.invoicexml.com/docs/api/extract/json) |
 | [`ai-convert.js`](./ai-convert.js) | (Experimental) Convert a plain PDF to CII with AI | [`POST /v1/transform/to/cii`](https://www.invoicexml.com/docs/api/transform/to/cii) |

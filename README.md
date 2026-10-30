@@ -27,6 +27,7 @@ The EN 16931 specification alone runs over 400 pages, the CII D16B schema is a d
   - [Create and validate CII with Python](#create-and-validate-cii-with-python)
   - [Create and validate CII with Ruby](#create-and-validate-cii-with-ruby)
 - [Parse CII data as JSON](#parse-cii-data-as-json)
+- [Send CII invoices by email](#send-cii-invoices-by-email)
 - [Render CII as a readable PDF](#render-cii-as-a-readable-pdf)
 - [AI-powered PDF to CII conversion (Experimental)](#ai-powered-pdf-to-cii-conversion-experimental)
 - [Profiles and validation](#profiles-and-validation)
@@ -78,6 +79,7 @@ Every example in this repository produces or consumes invoices validated against
 | Operation | Description |
 |---|---|
 | **[Create CII](https://www.invoicexml.com/docs/api/create/cii)** | Build an EN 16931 compliant CII D16B XML invoice from a structured JSON request |
+| **[Send by email](https://www.invoicexml.com/docs/api/create/cii/email)** | Generate the invoice and email it from your own verified domain in one API call |
 | **[Validate CII](https://www.invoicexml.com/docs/api/validate/cii)** | Verify a CII file against the D16B XSD and the business rules for the profile it declares |
 | **[Extract JSON](https://www.invoicexml.com/docs/api/extract/json)** | Parse a CII XML file into structured invoice data as JSON for downstream systems |
 | **[Render to PDF](https://www.invoicexml.com/docs/api/render/cii/to/pdf)** | Render a CII XML file into a human-readable PDF preview |
@@ -87,7 +89,7 @@ Every example in this repository produces or consumes invoices validated against
 
 ## Quick start by language
 
-Each language has its own folder containing all four operations as standalone, runnable files. Open the folder for your language to see installation steps, dependencies, and usage.
+Each language has its own folder containing all of these operations as standalone, runnable files. Open the folder for your language to see installation steps, dependencies, and usage.
 
 ### Create and validate CII with C# / .NET
 
@@ -193,6 +195,48 @@ Many downstream systems (ERPs, accounting software, expense management tools) wo
 The invoice document sits under the **`invoice`** key of the response, so you read `invoice.seller.name` or `invoice.totals.grandTotalAmount` (BT-112). A complete sample response with every field of the invoice model populated is in [json/extract-json-response.json](./json/extract-json-response.json); optional fields that are absent from the source document come back as `null` (empty arrays for lists).
 
 This is the fastest way to get invoice data out of a CII file and into a modern data pipeline.
+
+---
+
+## Send CII invoices by email
+
+Generate an invoice and deliver it in one API call. [`POST /v1/create/cii/email`](https://www.invoicexml.com/docs/api/create/cii/email) takes the same request as [`POST /v1/create/cii`](https://www.invoicexml.com/docs/api/create/cii) plus an `email` object, builds and validates the invoice, and sends the CII XML as an attachment from your own domain. See [email delivery for CII](https://www.invoicexml.com/api/create/cii/email).
+
+Setup takes three steps:
+
+1. Add your domain on the [Verified email domains](https://www.invoicexml.com/account/sending-domains) page of your dashboard.
+2. Add the DNS records it shows you. Verification usually completes within minutes and can take up to 72 hours.
+3. Call the route, with any address on that domain as the sender.
+
+```js
+const response = await fetch('https://api.invoicexml.com/v1/create/cii/email', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + apiKey,
+    },
+    body: JSON.stringify({
+        invoice,
+        email: {
+            from:    'invoices@yourcompany.com',
+            to:      'customer@example.com',
+            subject: 'Invoice CII-2026-001',
+            message: 'Hello,\n\nPlease find attached invoice CII-2026-001.\n\nKind regards',
+        },
+    }),
+});
+```
+
+The answer is `{"status":"accepted","messageId":"..."}` instead of the file: the email was handed over for delivery. `subject` and `message` are optional, and `cc`, `bcc` and `replyTo` are available too. If your plan does not include email delivery the API answers 403, and [pricing](https://www.invoicexml.com/pricing) shows what does.
+
+| Language | Create and send |
+|---|---|
+| C# / .NET | [`SendEmail.cs`](./csharp/SendEmail.cs) |
+| Java | [`SendEmail.java`](./java/SendEmail.java) |
+| PHP | [`send-email.php`](./php/send-email.php) |
+| Node.js | [`send-email.js`](./nodejs/send-email.js) |
+| Python | [`send_email.py`](./python/send_email.py) |
+| Ruby | [`send_email.rb`](./ruby/send_email.rb) |
 
 ---
 
