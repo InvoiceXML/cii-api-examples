@@ -297,7 +297,7 @@ CII is one syntax among several in the European e-invoicing landscape:
 - **Peppol BIS Billing 3.0**: UBL-based subset exchanged over the Peppol network.
 - **EN 16931**: the European norm that underlies all of the above.
 
-For a side-by-side comparison of when to use which format, see the [e-invoicing standards comparison on invoicexml.com](https://www.invoicexml.com/standards).
+Each format has its own overview page on invoicexml.com: [ZUGFeRD](https://www.invoicexml.com/zugferd), [Factur-X](https://www.invoicexml.com/facturx), [UBL](https://www.invoicexml.com/ubl), [Peppol](https://www.invoicexml.com/peppol), [XRechnung](https://www.invoicexml.com/xrechnung) and [CII](https://www.invoicexml.com/cii).
 
 ---
 
